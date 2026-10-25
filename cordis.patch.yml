@@ -1,0 +1,20 @@
+# dsh-injection-list bundle patch
+#
+# 一条 insert 行挂载本插件。Host 半边在 agent/pre-step 链尾记录每个会话收到的
+# 上下文注入并通过 /injection-list/api/* 提供；client 半边有三件互不依赖的显示，
+# 全部由下面的 config 开关控制（缺省全开，与改造前一致）。
+#
+#   hostRecord     记录 + 暴露 API（关掉则三件显示都无数据）
+#   headerButton   会话页头的「注入 N」按钮
+#   turnTailList   每回合尾部的注入行
+#   chatNodes      消息流里的上下文节点（复用官方 context 渲染器）
+#
+# ⚠ 不要同时把包加进 dsh.profile.bundles —— 同一 id 会被插两次。
+- insert:
+    - id: injection-list
+      name: 'dsh-injection-list'
+      config:
+        hostRecord: true
+        headerButton: true
+        turnTailList: false
+        chatNodes: true

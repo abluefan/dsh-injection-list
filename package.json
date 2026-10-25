@@ -1,0 +1,35 @@
+{
+  "name": "dsh-injection-list",
+  "version": "0.1.0",
+  "description": "在会话页头显示本轮上下文注入清单（live-docs / time-context / agent-instructions …），每行只写来源名，点击展开内容。补 0.2.1 UI 把 context 行折叠掉的缺口。",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "engines": {
+    "dsh": ">=0.2.1-rc.2"
+  },
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "license": "MIT"
+}
